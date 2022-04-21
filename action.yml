@@ -5,6 +5,10 @@ inputs:
     description: 'the GAP packages to clone'
     required: false
     default: ''
+  GAP_PKGS_TO_DOWNLOAD:
+    description: 'the GAP packages to download, specify a full URL pointing to a zip, tar.bz2 or tar.gz file to download and unpack' 
+    required: false 
+    default: ''
   GAP_PKGS_TO_BUILD:
     description: 'the GAP packages to build'
     required: false
@@ -36,6 +40,30 @@ runs:
                   echo "Invalid package name or URL '$pkg' in GAP_PKGS_TO_CLONE"
                   exit 1
               fi
+          done
+
+      - name: "Download additional GAP Packages"
+        shell: bash
+        run: |
+          cd ${GAP_HOME}/pkg
+          for pkg in ${{ inputs.GAP_PKGS_TO_DOWNLOAD }}; do
+            # delete any existing variants of the package to avoid multiple versions
+            # from being compiled later on
+            archive=${pkg##*/}
+            pkgname=${archive%%-*}
+            rm -rf "$pkgname"*
+            if [[ "$pkg" =~ (.tar.gz|.tar.bz2)$ ]] ; then
+              wget ${pkg}
+              tar -xf ${archive}
+              rm ${archive}
+            elif [[ "$pkg" =~ .zip$ ]] ; then
+              wget ${pkg}
+              unzip ${archive}
+              rm ${archive}
+            else
+              echo "Invalid URL in GAP_PKGS_TO_DOWNLOAD"
+              exit 1
+            fi
           done
           
       - name: "Build additional GAP packages"

@@ -21,7 +21,16 @@ jobs:
         container: [gap-4.11.1-minimal]
         GAP_PKGS_TO_BUILD:
           - ''
-#        include:
+        GAP_PKGS_TO_CLONE:
+          - ''
+        GAP_PKGS_TO_DOWNLOAD:
+          - ''
+        include:
+          - os: ubuntu-latest
+            container: [gap-4.11.1-minimal]
+            GAP_PKGS_TO_BUILD: ''
+            GAP_PKGS_TO_CLONE: 'recog'
+            GAP_PKGS_TO_DOWNLOAD: 'http://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrep-2.1.2.tar.gz'
 #          - os: ubuntu-latest
 #            gap-branch: master
 #            GAP_PKGS_TO_BUILD: ''
@@ -43,3 +52,5 @@ jobs:
       - uses: ./
         with:
           GAP_PKGS_TO_BUILD: ${{ matrix.GAP_PKGS_TO_BUILD }}
+          GAP_PKGS_TO_CLONE: ${{ matrix.GAP_PKGS_TO_CLONE }}
+          GAP_PKGS_TO_DOWNLOAD: ${{ matrix.GAP_PKGS_TO_DOWNLOAD }}

@@ -27,7 +27,7 @@ jobs:
           - ''
         include:
           - os: ubuntu-latest
-            container: [gap-4.11.1-minimal]
+            container: 'gap-4.11.1-minimal'
             GAP_PKGS_TO_BUILD: ''
             GAP_PKGS_TO_CLONE: 'recog'
             GAP_PKGS_TO_DOWNLOAD: 'http://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrep-2.1.2.tar.gz'

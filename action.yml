@@ -51,17 +51,14 @@ runs:
               # delete any existing variants of the package to avoid multiple versions
               # from being compiled later on
               archive=${pkg##*/}
-              echo ${archive}
               pkgname=${archive%%-*}
               rm -rf "$pkgname"*
               if [[ "$pkg" =~ (.tar.gz|.tar.bz2)$ ]] ; then
                   wget ${pkg}
                   tar -xf ${archive}
-                  rm ${archive}
               elif [[ "$pkg" =~ .zip$ ]] ; then
                   wget ${pkg}
                   unzip ${archive}
-                  rm ${archive}
               else
                   echo "Invalid URL in GAP_PKGS_TO_DOWNLOAD"
                   exit 1

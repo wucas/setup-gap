@@ -51,6 +51,7 @@ runs:
               # delete any existing variants of the package to avoid multiple versions
               # from being compiled later on
               archive=${pkg##*/}
+              echo ${archive}
               pkgname=${archive%%-*}
               rm -rf "$pkgname"*
               if [[ "$pkg" =~ (.tar.gz|.tar.bz2)$ ]] ; then

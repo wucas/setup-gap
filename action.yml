@@ -45,25 +45,26 @@ runs:
       - name: "Download additional GAP Packages"
         shell: bash
         run: |
+          # optionally: download published versions of packages
           cd ${GAP_HOME}/pkg
           for pkg in ${{ inputs.GAP_PKGS_TO_DOWNLOAD }}; do
-            # delete any existing variants of the package to avoid multiple versions
-            # from being compiled later on
-            archive=${pkg##*/}
-            pkgname=${archive%%-*}
-            rm -rf "$pkgname"*
-            if [[ "$pkg" =~ (.tar.gz|.tar.bz2)$ ]] ; then
-              wget ${pkg}
-              tar -xf ${archive}
-              rm ${archive}
-            elif [[ "$pkg" =~ .zip$ ]] ; then
-              wget ${pkg}
-              unzip ${archive}
-              rm ${archive}
-            else
-              echo "Invalid URL in GAP_PKGS_TO_DOWNLOAD"
-              exit 1
-            fi
+              # delete any existing variants of the package to avoid multiple versions
+              # from being compiled later on
+              archive=${pkg##*/}
+              pkgname=${archive%%-*}
+              rm -rf "$pkgname"*
+              if [[ "$pkg" =~ (.tar.gz|.tar.bz2)$ ]] ; then
+                  wget ${pkg}
+                  tar -xf ${archive}
+                  rm ${archive}
+              elif [[ "$pkg" =~ .zip$ ]] ; then
+                  wget ${pkg}
+                  unzip ${archive}
+                  rm ${archive}
+              else
+                  echo "Invalid URL in GAP_PKGS_TO_DOWNLOAD"
+                  exit 1
+              fi
           done
           
       - name: "Build additional GAP packages"

@@ -57,4 +57,4 @@ jobs:
       - run: |
           if [[ -f ${{ GAP_HOME }}/pkg/log/fail.log ]]; then
             cat ${{GAP_HOME}}/pkg/log/fail.log
-          fi
+          fi;

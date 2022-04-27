@@ -54,4 +54,7 @@ jobs:
           GAP_PKGS_TO_BUILD: ${{ matrix.GAP_PKGS_TO_BUILD }}
           GAP_PKGS_TO_CLONE: ${{ matrix.GAP_PKGS_TO_CLONE }}
           GAP_PKGS_TO_DOWNLOAD: ${{ matrix.GAP_PKGS_TO_DOWNLOAD }}
-      - run: cat ./log/fail.log
+      - run: |
+          if [[ -f ${{ GAP_HOME }}/pkg/log/fail.log ]]; then
+            cat ${{GAP_HOME}}/pkg/log/fail.log
+          fi

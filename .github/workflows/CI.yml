@@ -55,6 +55,6 @@ jobs:
           GAP_PKGS_TO_CLONE: ${{ matrix.GAP_PKGS_TO_CLONE }}
           GAP_PKGS_TO_DOWNLOAD: ${{ matrix.GAP_PKGS_TO_DOWNLOAD }}
       - run: |
-          if [[ -f /home/gap/inst/gap-4.11.1/pkg/log/fail.log ]]; then
+          if [[ -f /home/gap/inst/gap-4.11.1/pkg/log/fail.log ]] ; then
             cat /home/gap/inst/gap-4.11.1/pkg/log/fail.log
-          fi;
+          fi

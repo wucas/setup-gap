@@ -31,10 +31,11 @@ jobs:
             GAP_PKGS_TO_BUILD: 'io'
             GAP_PKGS_TO_CLONE: 'recog io'
             GAP_PKGS_TO_DOWNLOAD: 'http://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrep-2.1.2.tar.gz'
-#          - os: ubuntu-latest
-#            gap-branch: master
-#            GAP_PKGS_TO_BUILD: ''
-#            HPCGAP: yes
+          - os: ubuntu-latest
+            container: 'gap-4.11.1-minimal'
+            GAP_PKGS_TO_BUILD: 'digraphs'
+            GAP_PKGS_TO_CLONE: 'digraphs'
+            GAP_PKGS_TO_DOWNLOAD: ''
 #          - os: ubuntu-latest
 #            gap-branch: master
 #            ABI: 32

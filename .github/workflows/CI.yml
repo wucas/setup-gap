@@ -63,7 +63,7 @@ jobs:
           if [[ -f /home/gap/inst/gap-4.11.1/pkg/log/fail.log ]] ; then
             cat /home/gap/inst/gap-4.11.1/pkg/log/fail.log
           fi
-          echo cat /home/gap/inst/gap-4.11.1/pkg/log/fail.log | wc -l
+          cat /home/gap/inst/gap-4.11.1/pkg/log/fail.log | wc -l
 #          if [[  ]] ; then
 #
 #          fi

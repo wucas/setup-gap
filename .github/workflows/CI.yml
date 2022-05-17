@@ -33,8 +33,8 @@ jobs:
             GAP_PKGS_TO_DOWNLOAD: 'http://www.math.rwth-aachen.de/homes/Thomas.Breuer/atlasrep/atlasrep-2.1.2.tar.gz'
           - os: ubuntu-latest
             container: 'gap-4.11.1-minimal'
-            GAP_PKGS_TO_BUILD: 'digraphs'
-            GAP_PKGS_TO_CLONE: 'digraphs'
+            GAP_PKGS_TO_BUILD: 'CddInterface'
+            GAP_PKGS_TO_CLONE: 'homalg-project/CddInterface'
             GAP_PKGS_TO_DOWNLOAD: ''
 #          - os: ubuntu-latest
 #            gap-branch: master

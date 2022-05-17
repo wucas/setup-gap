@@ -36,11 +36,11 @@ jobs:
             GAP_PKGS_TO_BUILD: 'CddInterface'
             GAP_PKGS_TO_CLONE: 'homalg-project/CddInterface'
             GAP_PKGS_TO_DOWNLOAD: ''
-#          - os: ubuntu-latest
-#            gap-branch: master
-#            ABI: 32
-#            GAP_PKGS_TO_BUILD: 'default'
-#            HPCGAP: no
+          - os: ubuntu-latest
+            container: 'gap-4.11.1-minimal'
+            GAP_PKGS_TO_BUILD: 'NormalizInterface'
+            GAP_PKGS_TO_CLONE: 'NormalizInterface'
+            GAP_PKGS_TO_DOWNLOAD: ''
 #          - os: macos-latest
 #            gap-branch: master
 #            GAP_PKGS_TO_BUILD: ''

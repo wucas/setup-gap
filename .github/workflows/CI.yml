@@ -46,15 +46,19 @@ jobs:
 #            HPCGAP: no
 
     steps:
-      - uses: actions/checkout@v3
+      - name: "Checkout"
+        uses: actions/checkout@v3
       #- if: ${{ matrix.os == 'windows-latest' }}
       #  uses: gap-actions/setup-cygwin@v1
-      - uses: ./
+      - name: "run action"
+        uses: ./
         with:
           GAP_PKGS_TO_BUILD: ${{ matrix.GAP_PKGS_TO_BUILD }}
           GAP_PKGS_TO_CLONE: ${{ matrix.GAP_PKGS_TO_CLONE }}
           GAP_PKGS_TO_DOWNLOAD: ${{ matrix.GAP_PKGS_TO_DOWNLOAD }}
-      - run: |
+      - name: "echo fail.log"
+        shell: bash
+        run: |
           if [[ -f /home/gap/inst/gap-4.11.1/pkg/log/fail.log ]] ; then
             cat /home/gap/inst/gap-4.11.1/pkg/log/fail.log
           fi

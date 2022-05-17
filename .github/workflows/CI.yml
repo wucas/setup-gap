@@ -38,8 +38,8 @@ jobs:
             GAP_PKGS_TO_DOWNLOAD: ''
           - os: ubuntu-latest
             container: 'gap-4.11.1-minimal'
-            GAP_PKGS_TO_BUILD: 'NormalizInterface'
-            GAP_PKGS_TO_CLONE: 'NormalizInterface'
+            GAP_PKGS_TO_BUILD: 'xgap'
+            GAP_PKGS_TO_CLONE: 'xgap'
             GAP_PKGS_TO_DOWNLOAD: ''
 #          - os: macos-latest
 #            gap-branch: master
